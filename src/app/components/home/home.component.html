@@ -1,0 +1,46 @@
+<div class="container">
+
+	<h1 class="text-center my-5">Products</h1>
+
+	<div class="row">
+		<div class="col-12 col-md-6 col-lg-4" *ngFor="let item of items">
+			<div class="card cursor-pointer p-1 mb-3" routerLink="/product/{{item.id}}">
+				<div class="card-header">
+					<h3>{{item.name}}</h3>
+				</div>
+
+				<div class="card-body">
+					<h5 class="card-title">{{item.price}}€</h5>
+					<p class="card-subtitle mb-2 text-muted">{{item.description}}</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<nav>
+		<ul class="pagination">
+			<li class="page-item cursor-pointer" (click)="previous()">
+				<a class="page-link" tabindex="-1">Previous</a>
+			</li>
+
+			<ng-container *ngFor="let item of pageNumberArr; index as i">
+				<li class="page-item cursor-pointer" [class.active]="pageSelected === i+1"
+					(click)="onPageSelected(i+1)">
+					<a class="page-link">{{ i+1 }}</a>
+				</li>
+			</ng-container>
+
+			<li class="page-item cursor-pointer" (click)="next()">
+				<a class="page-link">Next</a>
+			</li>
+
+			<li class="page-item px-3">
+				Page size:
+				<select [(ngModel)]="pageSize" (change)="onPageSizeChange()" class="btn btn-primary">
+					<option *ngFor="let item of [3, 5, 6, 10, 15, 30]" [value]="item">{{ item }}</option>
+				</select>
+			</li>
+		</ul>
+	</nav>
+
+</div>

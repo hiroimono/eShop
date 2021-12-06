@@ -1,0 +1,16 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "~bootstrap/scss/bootstrap-utilities";
+
+//Generate utilites for Cursor
+$utilities: map-merge(
+	$utilities,
+	(
+		"cursor": (
+			property: cursor,
+			values: auto default pointer wait text move help not-allowed,
+		),
+	)
+);
+
+@import "~bootstrap/scss/bootstrap";
